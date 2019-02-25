@@ -9,6 +9,7 @@ TagManager:
   - Fall
   - Winter
   - Summer
+  - Ice
   layers:
   - Default
   - TransparentFX

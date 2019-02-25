@@ -54,22 +54,24 @@ public class ButtonManager : MonoBehaviour
         patternStart = false;
 
         StartCoroutine(play());
+
     }
 
     IEnumerator play()
     {
-        foreach (int p in pattern)
+        for (int p = 0; p < patternLength; ++p)
         {
             Debug.Log(p);
-            Debug.Log(seasons[p]);
+            Debug.Log(seasons[pattern[p]]);
 
             yield return new WaitForSeconds(2);
             
-            GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[p]);
+            GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[pattern[p]]);
 
             StartCoroutine(currentButton.GetComponent<Button>().lightUp());
 
         }
+
     }
 
 
@@ -83,7 +85,7 @@ public class ButtonManager : MonoBehaviour
 
         else if (b.tag != seasons[pattern[currentButton]])
         {
-            Application.Quit();
+            Debug.Log("Loser");
             //trigger some kind of game over screen
         }
 
@@ -92,6 +94,7 @@ public class ButtonManager : MonoBehaviour
             addPattern();
             currentButton = 0;
         }
+
         
     }
 
