@@ -11,6 +11,7 @@ TagManager:
   - Summer
   - Ice
   - Wind
+  - Fire
   layers:
   - Default
   - TransparentFX
