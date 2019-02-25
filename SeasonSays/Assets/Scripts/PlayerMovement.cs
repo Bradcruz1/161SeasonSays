@@ -9,11 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private Collider m_collider;
 
     private float m_speed;
-    private float jumpForce;
+    private float m_jumpForce;
 
     [SerializeField]
     private bool m_grounded;
-    // Start is called before the first frame update
 
     void Awake()
     {
@@ -21,32 +20,24 @@ public class PlayerMovement : MonoBehaviour
         m_collider = this.GetComponent<Collider>();
 
         m_speed = 5f;
-        jumpForce = 5f;
+        m_jumpForce = 5f;
 
         m_grounded = true;
     }
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
         if (Input.GetButtonDown("Jump") && m_grounded)
         {
             Jump();
-            //m_grounded = true;
         }
     }
 
     void Move()
     {
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        //print(horizontalMovement);
         float verticalMovement = Input.GetAxisRaw("Vertical");
-        //print(verticalMovement);
 
         Vector3 currentVelocity = m_rigidbody.velocity;
         m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed, currentVelocity.y, verticalMovement * m_speed);
@@ -54,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        //m_grounded = false;
-        m_rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        m_grounded = false;
+        m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
     }
 
     void OnCollisionStay(Collision collision)
@@ -72,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
             if (hitSomething && hitInfo.collider.CompareTag("Ground"))
             {
                 m_grounded = true;
-                Debug.LogFormat("Grounded5: {0}", m_grounded);
             }
         }
     }
@@ -82,7 +72,15 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
         {
             m_grounded = false;
-            Debug.LogFormat("Grounded6: {0}", m_grounded);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Wind"))
+        {
+            WindZone otherWind = other.transform.GetComponent<WindZone>();
+            m_rigidbody.AddForce(otherWind.windDirection * otherWind.windStrength, ForceMode.Force);
         }
     }
 }
