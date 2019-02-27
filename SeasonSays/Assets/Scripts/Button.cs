@@ -11,6 +11,9 @@ public class Button : MonoBehaviour
     private Color color;
     public ButtonUnityEvent buttonHit = new ButtonUnityEvent();
 
+    public GameObject Puddle;
+    public GameObject IcePatch;
+    public GameObject Wind;
     
     void Awake()
     {
@@ -36,6 +39,27 @@ public class Button : MonoBehaviour
         {
             buttonHit.Invoke(this);
         }
+
+        if (this.CompareTag("Spring"))
+        {
+            Instantiate(Puddle, new Vector3(Random.Range(-28f, 28f), 2f, Random.Range(-28f, 28f)), Quaternion.identity);
+        }
+
+        if (this.CompareTag("Winter"))
+        {
+            Instantiate(IcePatch, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
+        }
+
+        if (this.CompareTag("Fall"))
+        {
+            Instantiate(Wind);
+        }
+
+        if(this.CompareTag("Summer"))
+        {
+            
+        }
+
     }
 
     public IEnumerator lightUp()
