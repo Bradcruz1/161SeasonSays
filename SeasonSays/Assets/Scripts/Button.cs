@@ -64,7 +64,7 @@ public class Button : MonoBehaviour
 
     public IEnumerator lightUp()
     {
-        material.color = Color.white;
+        material.color *= 2f;
 
         yield return new WaitForSeconds(1);
 
