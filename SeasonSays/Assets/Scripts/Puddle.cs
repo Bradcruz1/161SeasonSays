@@ -21,7 +21,7 @@ public class Puddle : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            Destroy(player);
+            Application.Quit();
             //trigger some kind of game over screen
         }
     }

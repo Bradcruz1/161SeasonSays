@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 932902964527628650}
   - component: {fileID: 5613240838048576457}
   - component: {fileID: 5784737836155162714}
+  - component: {fileID: 603650912940147135}
   - component: {fileID: 4482801930060474158}
   m_Layer: 0
   m_Name: Puddle
@@ -78,6 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &603650912940147135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520818233215859346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42385a581df44c80b8af62cc20378e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4351797908408227702, guid: 3fda7b2ef4c0fa44d8283fa568b1919b, type: 3}
 --- !u!136 &4482801930060474158
 CapsuleCollider:
   m_ObjectHideFlags: 0
