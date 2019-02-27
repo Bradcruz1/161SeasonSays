@@ -52,7 +52,7 @@ public class Button : MonoBehaviour
 
         if (this.CompareTag("Fall"))
         {
-            Instantiate(Wind);
+            Instantiate(Wind, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
         }
 
         if(this.CompareTag("Summer"))
