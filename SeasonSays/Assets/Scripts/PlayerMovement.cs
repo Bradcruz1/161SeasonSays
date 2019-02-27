@@ -45,35 +45,45 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        m_grounded = false;
-        m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+        if (Input.GetKeyDown("space") && m_grounded)
+        {
+            m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+            m_grounded = false;
+        }
+        //m_grounded = false;
+        //m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        m_grounded = true;
     }
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            Vector3 feetPosition = new Vector3(this.transform.position.x, m_collider.bounds.min.y, this.transform.position.z);
-            RaycastHit hitInfo;
+        //if (collision.collider.CompareTag("Ground"))
+        //{
+        //    Vector3 feetPosition = new Vector3(this.transform.position.x, m_collider.bounds.min.y, this.transform.position.z);
+        //    RaycastHit hitInfo;
 
-            bool hitSomething = Physics.Raycast(feetPosition, Vector3.down, out hitInfo, 0.1f);
+        //    bool hitSomething = Physics.Raycast(feetPosition, Vector3.down, out hitInfo, 0.1f);
 
-            Debug.DrawRay(feetPosition, Vector3.down * 0.1f, Color.green);
+        //    Debug.DrawRay(feetPosition, Vector3.down * 0.1f, Color.green);
 
-            if (hitSomething && hitInfo.collider.CompareTag("Ground"))
-            {
-                m_grounded = true;
-            }
-        }
+        //    if (hitSomething && hitInfo.collider.CompareTag("Ground"))
+        //    {
+        //        m_grounded = true;
+        //    }
+        //}
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            m_grounded = false;
-        }
-    }
+    //void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.collider.CompareTag("Ground"))
+    //    {
+    //        m_grounded = false;
+    //    }
+    //}
 
     void OnTriggerStay(Collider other)
     {
