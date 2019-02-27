@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         m_rigidbody = this.GetComponent<Rigidbody>();
         m_collider = this.GetComponent<Collider>();
 
-        m_speed = 5f;
+        m_speed = 10f;
         m_jumpForce = 5f;
 
         m_grounded = true;
