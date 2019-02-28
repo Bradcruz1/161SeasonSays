@@ -59,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
         m_grounded = true;
     }
 
-    void OnCollisionStay(Collision collision)
-    {
+    //void OnCollisionStay(Collision collision)
+    //{
         //if (collision.collider.CompareTag("Ground"))
         //{
         //    Vector3 feetPosition = new Vector3(this.transform.position.x, m_collider.bounds.min.y, this.transform.position.z);
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         //        m_grounded = true;
         //    }
         //}
-    }
+    //}
 
     //void OnCollisionExit(Collision collision)
     //{
