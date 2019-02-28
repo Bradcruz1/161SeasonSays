@@ -64,7 +64,7 @@ public class ButtonManager : MonoBehaviour
             Debug.Log(p);
             Debug.Log(seasons[pattern[p]]);
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             
             GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[pattern[p]]);
 

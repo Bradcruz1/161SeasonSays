@@ -35,6 +35,7 @@ public class Button : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("bump");
         if (other.collider.CompareTag("Player")) 
         {
             buttonHit.Invoke(this);
@@ -66,7 +67,7 @@ public class Button : MonoBehaviour
     {
         material.color *= 2f;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
 
         material.color = color;
     }
