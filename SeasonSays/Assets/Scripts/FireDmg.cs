@@ -37,6 +37,5 @@ public class FireDmg : MonoBehaviour
     void HealthText()
     {
         healthbar.text = "Health: " + health.ToString();
-
     }
 }

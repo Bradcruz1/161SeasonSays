@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && m_grounded)
         {
+
             m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_grounded = false;
         }
@@ -100,12 +101,34 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
+
+    //Fix Sound when you run straight through it
     void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Wind"))
         {
+            if (!other.GetComponent<AudioSource>().isPlaying)
+            {
+                other.GetComponent<AudioSource>().Play();
+            }
             WindZone otherWind = other.transform.GetComponent<WindZone>();
             m_rigidbody.AddForce(otherWind.windDirection * otherWind.windStrength, ForceMode.Force);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Wind"))
+        {
+            other.GetComponent<AudioSource>().Play();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wind"))
+        {
+            other.GetComponent<AudioSource>().Stop();
         }
     }
 

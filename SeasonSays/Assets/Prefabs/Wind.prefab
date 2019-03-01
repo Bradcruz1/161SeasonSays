@@ -4756,5 +4756,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de354df719a057f4dbdf6349acc14759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windStrength: 45
+  windStrength: 175
   windDirection: {x: 5, y: 0, z: 0}
