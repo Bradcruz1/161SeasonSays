@@ -8,7 +8,7 @@ public class FireDmg : MonoBehaviour
 {
     public int health = 30;
     public int damage = 5;
-    public Text healthbar;
+    public Text  healthbar;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,6 @@ public class FireDmg : MonoBehaviour
         HealthText();
         if (health <= 0)
         {
-            Destroy(this.gameObject);
             SceneManager.LoadScene("Over");
         }   
     }
