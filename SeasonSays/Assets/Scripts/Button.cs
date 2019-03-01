@@ -47,17 +47,17 @@ public class Button : MonoBehaviour
 
                 if (this.CompareTag("Spring"))
                 {
-                    Instantiate(Puddle, new Vector3(Random.Range(-28f, 28f), 1.5f, Random.Range(-28f, 28f)), Quaternion.identity);
+                    Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 1.5f, Random.Range(-26f, 26f)), Quaternion.identity);
                 }
 
                 if (this.CompareTag("Winter"))
                 {
-                    Instantiate(IcePatch, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
+                    Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), -2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
                 }
 
                 if (this.CompareTag("Fall"))
                 {
-                    Instantiate(Wind, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
+                    Instantiate(Wind, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
                 }
 
                 if(this.CompareTag("Summer"))

@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool m_grounded;
 
+    private bool isIcy;
+
     void Awake()
     {
         m_rigidbody = this.GetComponent<Rigidbody>();
@@ -40,7 +42,15 @@ public class PlayerMovement : MonoBehaviour
         float verticalMovement = Input.GetAxis("Vertical");
 
         Vector3 currentVelocity = m_rigidbody.velocity;
-        m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed, currentVelocity.y, verticalMovement * m_speed);
+
+        if (!isIcy) {
+            m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed, currentVelocity.y, verticalMovement * m_speed);
+        }
+
+        if (isIcy) {
+            m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed * 5, currentVelocity.y, verticalMovement * m_speed * 5);
+
+        }   
     }
 
     void Jump()
@@ -54,9 +64,14 @@ public class PlayerMovement : MonoBehaviour
         //m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
         m_grounded = true;
+
+        if (other.collider.CompareTag("Ice"))
+        {
+            isIcy = true;
+        }
     }
 
     //void OnCollisionStay(Collision collision)
@@ -91,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
         {
             WindZone otherWind = other.transform.GetComponent<WindZone>();
             m_rigidbody.AddForce(otherWind.windDirection * otherWind.windStrength, ForceMode.Force);
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        if(other.collider.CompareTag("Ice"))
+        {
+            isIcy = false;
         }
     }
 }
