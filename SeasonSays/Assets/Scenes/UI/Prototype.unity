@@ -378,6 +378,10 @@ MonoBehaviour:
   - {fileID: 1036444455}
   - {fileID: 1036444457}
   - {fileID: 1036444453}
+  Puddle: {fileID: 2520818233215859346, guid: a5b48eed68a9f4598833553f9e52efb3, type: 3}
+  IcePatch: {fileID: 3585145817292554079, guid: 68e52b3cd17e84ea59b24d8443e08bc5,
+    type: 3}
+  Wind: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c, type: 3}
 --- !u!4 &612633074
 Transform:
   m_ObjectHideFlags: 0
@@ -783,10 +787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ce77785cf4c4e949280158d26cb903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puddle: {fileID: 2520818233215859346, guid: a5b48eed68a9f4598833553f9e52efb3, type: 3}
-  IcePatch: {fileID: 3585145817292554079, guid: 68e52b3cd17e84ea59b24d8443e08bc5,
-    type: 3}
-  Wind: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c, type: 3}
 --- !u!1 &1036444455
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,10 +819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ce77785cf4c4e949280158d26cb903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puddle: {fileID: 2520818233215859346, guid: a5b48eed68a9f4598833553f9e52efb3, type: 3}
-  IcePatch: {fileID: 3585145817292554079, guid: 68e52b3cd17e84ea59b24d8443e08bc5,
-    type: 3}
-  Wind: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c, type: 3}
 --- !u!1 &1036444457
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,10 +851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ce77785cf4c4e949280158d26cb903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puddle: {fileID: 2520818233215859346, guid: a5b48eed68a9f4598833553f9e52efb3, type: 3}
-  IcePatch: {fileID: 3585145817292554079, guid: 68e52b3cd17e84ea59b24d8443e08bc5,
-    type: 3}
-  Wind: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c, type: 3}
 --- !u!1 &1036444459
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,10 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ce77785cf4c4e949280158d26cb903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puddle: {fileID: 2520818233215859346, guid: a5b48eed68a9f4598833553f9e52efb3, type: 3}
-  IcePatch: {fileID: 3585145817292554079, guid: 68e52b3cd17e84ea59b24d8443e08bc5,
-    type: 3}
-  Wind: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c, type: 3}
 --- !u!23 &1038384609
 MeshRenderer:
   m_ObjectHideFlags: 0

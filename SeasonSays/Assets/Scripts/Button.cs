@@ -10,10 +10,6 @@ public class Button : MonoBehaviour
     private Material material;
     private Color color;
     public ButtonUnityEvent buttonHit = new ButtonUnityEvent();
-
-    public GameObject Puddle;
-    public GameObject IcePatch;
-    public GameObject Wind;
     
     void Awake()
     {
@@ -43,26 +39,6 @@ public class Button : MonoBehaviour
                 if (other.collider.CompareTag("Player")) 
                 {
                     buttonHit.Invoke(this);
-                }
-
-                if (this.CompareTag("Spring"))
-                {
-                    Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 1.5f, Random.Range(-26f, 26f)), Quaternion.identity);
-                }
-
-                if (this.CompareTag("Winter"))
-                {
-                    Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), -2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
-                }
-
-                if (this.CompareTag("Fall"))
-                {
-                    Instantiate(Wind, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
-                }
-
-                if(this.CompareTag("Summer"))
-                {
-                    
                 }
             }
     }

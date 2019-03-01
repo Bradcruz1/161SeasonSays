@@ -17,6 +17,10 @@ public class ButtonManager : MonoBehaviour
 
     private bool patternStart = true;
 
+    public GameObject Puddle;
+    public GameObject IcePatch;
+    public GameObject Wind;
+
     void Awake()
     {
         pattern.Add(Random.Range(0, 4));
@@ -78,24 +82,55 @@ public class ButtonManager : MonoBehaviour
 
     void completeListener(Button b)
     {
+
+        //choice is right and not last button in pattern
         if (b.tag == seasons[pattern[currentButton]] && currentButton + 1 != patternLength)
         {
             currentButton += 1;
+
+            addWeatherEffect(b);
         }
 
+        //choice was not right;
         else if (b.tag != seasons[pattern[currentButton]])
         {
             Debug.Log("Loser");
             //trigger some kind of game over screen
         }
 
+        //choice is right and last button in pattern
         else if (b.tag == seasons[pattern[currentButton]] && currentButton + 1 == patternLength)
         {
             addPattern();
             currentButton = 0;
+
+            addWeatherEffect(b);
         }
 
         
+    }
+
+    void addWeatherEffect(Button b)
+    {
+        if (b.CompareTag("Spring"))
+        {
+            Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 1.5f, Random.Range(-26f, 26f)), Quaternion.identity);
+        }
+
+        if (b.CompareTag("Winter"))
+        {
+            Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), -2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
+        }
+
+        if (b.CompareTag("Fall"))
+        {
+            Instantiate(Wind, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
+        }
+
+        if(b.CompareTag("Summer"))
+        {
+            
+        }
     }
 
     void addPattern()
