@@ -35,33 +35,39 @@ public class Button : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("bump");
-        if (other.collider.CompareTag("Player")) 
-        {
-            buttonHit.Invoke(this);
-        }
-
-        if (this.CompareTag("Spring"))
-        {
-            Instantiate(Puddle, new Vector3(Random.Range(-28f, 28f), 1.5f, Random.Range(-28f, 28f)), Quaternion.identity);
-        }
-
-        if (this.CompareTag("Winter"))
-        {
-            Instantiate(IcePatch, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
-        }
-
-        if (this.CompareTag("Fall"))
-        {
-            Instantiate(Wind, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
-        }
-
-        if(this.CompareTag("Summer"))
-        {
+            var normal = other.contacts[0].normal;
             
-        }
+            Debug.Log(normal.y);
+            if (normal.y == -1) {
+            Debug.Log("bump");
+            if (other.collider.CompareTag("Player")) 
+            {
+                buttonHit.Invoke(this);
+            }
 
+            if (this.CompareTag("Spring"))
+            {
+                Instantiate(Puddle, new Vector3(Random.Range(-28f, 28f), 1.5f, Random.Range(-28f, 28f)), Quaternion.identity);
+            }
+
+            if (this.CompareTag("Winter"))
+            {
+                Instantiate(IcePatch, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
+            }
+
+            if (this.CompareTag("Fall"))
+            {
+                Instantiate(Wind, new Vector3(Random.Range(-28f, 28f), 2.2f, Random.Range(-28f, 28f)), Quaternion.identity);
+            }
+
+            if(this.CompareTag("Summer"))
+            {
+                
+            }
+            }
     }
+
+
 
     public IEnumerator lightUp()
     {

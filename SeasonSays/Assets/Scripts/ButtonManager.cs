@@ -61,8 +61,8 @@ public class ButtonManager : MonoBehaviour
     {
         for (int p = 0; p < patternLength; ++p)
         {
-            Debug.Log(p);
-            Debug.Log(seasons[pattern[p]]);
+            // Debug.Log(p);
+            // Debug.Log(seasons[pattern[p]]);
 
             yield return new WaitForSeconds(1);
             
