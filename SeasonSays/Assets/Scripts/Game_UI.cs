@@ -22,6 +22,7 @@ public class Game_UI : MonoBehaviour
         curr = 0;
         total = 10;
         round = 0;
+        progress.gameObject.SetActive(false);
 
     }
 
@@ -29,7 +30,7 @@ public class Game_UI : MonoBehaviour
     void Update()
     {
         //curr++;
-        progress_text();
+        //progress_text();
     }
 
 
@@ -40,6 +41,8 @@ public class Game_UI : MonoBehaviour
             HideBarrier();
             go_text();
             center.sharedMaterial = colors[2];
+            wait_go.gameObject.SetActive(false);
+            progress.gameObject.SetActive(true);
         
 
         }
@@ -52,6 +55,7 @@ public class Game_UI : MonoBehaviour
         }
     }
 
+    
     void HideBarrier()
     {
         barrier.SetActive(false);
