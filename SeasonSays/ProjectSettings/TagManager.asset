@@ -12,6 +12,8 @@ TagManager:
   - Ice
   - Wind
   - Fire
+  - Go
+  - Wait
   layers:
   - Default
   - TransparentFX
