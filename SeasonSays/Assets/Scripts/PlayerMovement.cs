@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         m_rigidbody = this.GetComponent<Rigidbody>();
         m_collider = this.GetComponent<Collider>();
 
-        m_speed = 10f;
+        m_speed = 20f;
         m_jumpForce = 5f;
 
         m_grounded = true;
@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        float verticalMovement = Input.GetAxisRaw("Vertical");
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float verticalMovement = Input.GetAxis("Vertical");
 
         Vector3 currentVelocity = m_rigidbody.velocity;
         m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed, currentVelocity.y, verticalMovement * m_speed);
