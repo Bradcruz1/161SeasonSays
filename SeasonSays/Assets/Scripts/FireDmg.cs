@@ -30,6 +30,7 @@ public class FireDmg : MonoBehaviour
     {
         if (other.gameObject.tag == "Fire")
         {
+
             health -= damage;
         }
     }

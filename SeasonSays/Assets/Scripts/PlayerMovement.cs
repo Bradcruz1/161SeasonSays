@@ -10,9 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float m_speed;
     private float m_jumpForce;
+    private float m_elapsedTime;
 
     [SerializeField]
     private bool m_grounded;
+    [SerializeField]
+    private bool m_inWind;
 
     private bool isIcy;
 
@@ -23,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
         m_speed = 20f;
         m_jumpForce = 5f;
+        m_elapsedTime = 0f;
 
         m_grounded = true;
+        m_inWind = false;
     }
 
     void FixedUpdate()
@@ -105,14 +110,15 @@ public class PlayerMovement : MonoBehaviour
     //Fix Sound when you run straight through it
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Wind"))
+        if(m_inWind && other.CompareTag("Wind"))
         {
-            if (!other.GetComponent<AudioSource>().isPlaying)
-            {
-                other.GetComponent<AudioSource>().Play();
-            }
             WindZone otherWind = other.transform.GetComponent<WindZone>();
             m_rigidbody.AddForce(otherWind.windDirection * otherWind.windStrength, ForceMode.Force);
+            if (!other.GetComponent<AudioSource>().isPlaying)//&& (Time.time - m_elapsedTime >= 2f))
+            {
+                if (Time.time - m_elapsedTime > 0.15f)
+                    other.GetComponent<AudioSource>().Play();
+            }
         }
     }
 
@@ -120,7 +126,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Wind"))
         {
-            other.GetComponent<AudioSource>().Play();
+            m_inWind = true;
+            m_elapsedTime = Time.time;
         }
     }
 
@@ -129,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Wind"))
         {
             other.GetComponent<AudioSource>().Stop();
+            m_inWind = false;
         }
     }
 
