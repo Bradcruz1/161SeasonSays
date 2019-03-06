@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class FireDmg : MonoBehaviour
 {
-    
-    public int damage = 5;
+    [SerializeField]
+    private float damage = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +21,27 @@ public class FireDmg : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerMovement>().playerHealth -= damage;
         }
     }
-    
 
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        //other.GetComponent<PlayerMovement>().playerHealth -= damage;
+    //        //float health = other.GetComponent<PlayerMovement>().playerHealth;
+    //        //StartCoroutine(takeDamageCoroutine(health));
+    //    }
+    //}
+
+    //IEnumerator takeDamageCoroutine(float health)
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    health -= damage;
+    //}
 
     private void RandDirFire()
     {

@@ -498,6 +498,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wind
       objectReference: {fileID: 0}
+    - target: {fileID: 8228482034178705571, guid: b2e52df2775c5b64f92daf8b17323d4c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 259937039095234063, guid: b2e52df2775c5b64f92daf8b17323d4c,
         type: 3}
       propertyPath: m_LocalPosition.x

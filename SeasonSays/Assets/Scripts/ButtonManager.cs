@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject Puddle;
     public GameObject IcePatch;
     public GameObject Wind;
+    public GameObject Fire;
 
     public GameObject Player;
 
@@ -134,7 +136,8 @@ public class ButtonManager : MonoBehaviour
         //choice was not right;
         else if (b.tag != seasons[pattern[currentButton]])
         {
-            Debug.Log("Loser");
+            SceneManager.LoadScene("Over");
+            //Debug.Log("Loser");
             //trigger some kind of game over screen
         }
 
@@ -183,7 +186,7 @@ public class ButtonManager : MonoBehaviour
 
         if(b.CompareTag("Summer"))
         {
-            
+            Instantiate(Fire, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
         }
     }
 

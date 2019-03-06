@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isIcy;
 
     [SerializeField]
-    public int playerHealth;
+    public float playerHealth;
     
     public Text healthbar;
 
@@ -107,11 +107,16 @@ public class PlayerMovement : MonoBehaviour
         {
             WindZone otherWind = other.transform.GetComponent<WindZone>();
             m_rigidbody.AddForce(otherWind.windDirection * otherWind.windStrength, ForceMode.Force);
-            if (!other.GetComponent<AudioSource>().isPlaying)//&& (Time.time - m_elapsedTime >= 2f))
+            if (!other.GetComponent<AudioSource>().isPlaying)
             {
                 if (Time.time - m_elapsedTime > 0.15f)
                     other.GetComponent<AudioSource>().Play();
             }
+        }
+        if (other.CompareTag("Fire"))
+        {
+            if (!other.GetComponent<AudioSource>().isPlaying)
+                other.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -130,6 +135,10 @@ public class PlayerMovement : MonoBehaviour
         {
             other.GetComponent<AudioSource>().Stop();
             m_inWind = false;
+        }
+        if (other.CompareTag("Fire"))
+        {
+            //other.GetComponent<AudioSource>().Stop();
         }
     }
 

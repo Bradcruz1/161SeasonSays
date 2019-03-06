@@ -57,7 +57,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ccdd09089e0a51c4695af022afdb070f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 62099b9a095e1df47a39e7857aed8946, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -225,16 +225,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633895651545777436, guid: ae0f2912bf9f21f4c89fc155e57d5872,
         type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8633895651545777436, guid: ae0f2912bf9f21f4c89fc155e57d5872,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8633895651545777436, guid: ae0f2912bf9f21f4c89fc155e57d5872,
-        type: 3}
       propertyPath: ShapeModule.type
       value: 5
       objectReference: {fileID: 0}
@@ -261,11 +251,6 @@ PrefabInstance:
     - target: {fileID: 8633895651545777436, guid: ae0f2912bf9f21f4c89fc155e57d5872,
         type: 3}
       propertyPath: TriggerModule.outside
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8633895651545777436, guid: ae0f2912bf9f21f4c89fc155e57d5872,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
