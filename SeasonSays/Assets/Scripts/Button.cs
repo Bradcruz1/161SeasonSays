@@ -39,7 +39,7 @@ public class Button : MonoBehaviour
                 if (other.collider.CompareTag("Player")) 
                 {
                     buttonHit.Invoke(this);
-                this.GetComponent<AudioSource>().Play();
+                
                 }
             }
     }
