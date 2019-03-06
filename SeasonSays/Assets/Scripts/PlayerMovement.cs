@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,8 +18,12 @@ public class PlayerMovement : MonoBehaviour
     private bool m_grounded;
     [SerializeField]
     private bool m_inWind;
-
     private bool isIcy;
+
+    [SerializeField]
+    public int playerHealth;
+    
+    public Text healthbar;
 
     void Awake()
     {
@@ -30,6 +36,22 @@ public class PlayerMovement : MonoBehaviour
 
         m_grounded = true;
         m_inWind = false;
+
+        playerHealth = 30;
+    }
+
+    private void Update()
+    {
+        HealthText();
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene("Over");
+        }
+    }
+
+    void HealthText()
+    {
+        healthbar.text = "Health: " + playerHealth.ToString();
     }
 
     void FixedUpdate()
@@ -66,8 +88,6 @@ public class PlayerMovement : MonoBehaviour
             m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_grounded = false;
         }
-        //m_grounded = false;
-        //m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -79,33 +99,6 @@ public class PlayerMovement : MonoBehaviour
             isIcy = true;
         }
     }
-
-    //void OnCollisionStay(Collision collision)
-    //{
-        //if (collision.collider.CompareTag("Ground"))
-        //{
-        //    Vector3 feetPosition = new Vector3(this.transform.position.x, m_collider.bounds.min.y, this.transform.position.z);
-        //    RaycastHit hitInfo;
-
-        //    bool hitSomething = Physics.Raycast(feetPosition, Vector3.down, out hitInfo, 0.1f);
-
-        //    Debug.DrawRay(feetPosition, Vector3.down * 0.1f, Color.green);
-
-        //    if (hitSomething && hitInfo.collider.CompareTag("Ground"))
-        //    {
-        //        m_grounded = true;
-        //    }
-        //}
-    //}
-
-    //void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.collider.CompareTag("Ground"))
-    //    {
-    //        m_grounded = false;
-    //    }
-    //}
-
 
     //Fix Sound when you run straight through it
     void OnTriggerStay(Collider other)
