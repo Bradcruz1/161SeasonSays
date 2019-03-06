@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Puddle : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class Puddle : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            Application.Quit();
+            Debug.Log("Collided");
+            SceneManager.LoadScene("Over");
             //trigger some kind of game over screen
         }
     }

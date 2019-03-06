@@ -30,9 +30,7 @@ public class ButtonManager : MonoBehaviour
     public Renderer center;
     public Text progress;
     public Text Round;
-    private int curr;
-    private int total;
-    private int round;
+
 
     void Awake()
     {
@@ -57,9 +55,6 @@ public class ButtonManager : MonoBehaviour
         }
 
         center.sharedMaterial = colors[0];
-        curr = 0;
-        total = 10;
-        round = 0;
         progress_text();
         progress.gameObject.SetActive(false);
     }
