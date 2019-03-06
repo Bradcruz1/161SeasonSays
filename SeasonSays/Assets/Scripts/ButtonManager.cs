@@ -168,12 +168,12 @@ public class ButtonManager : MonoBehaviour
     {
         if (b.CompareTag("Spring"))
         {
-            Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 1.5f, Random.Range(-26f, 26f)), Quaternion.identity);
+            Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 3f, Random.Range(-26f, 26f)), Quaternion.identity);
         }
 
         if (b.CompareTag("Winter"))
         {
-            Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), -2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
+            Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), 3f, Random.Range(-26f, 26f)), Quaternion.identity);
         }
 
         if (b.CompareTag("Fall"))
