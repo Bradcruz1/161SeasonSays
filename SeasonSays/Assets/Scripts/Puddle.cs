@@ -9,14 +9,13 @@ public class Puddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //playSound();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void playSound()
+    //{
+    //    this.GetComponent<AudioSource>().Play();
+    //}
 
     void OnCollisionStay(Collision other)
     {

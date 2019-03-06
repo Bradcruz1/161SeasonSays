@@ -39,6 +39,7 @@ public class Button : MonoBehaviour
                 if (other.collider.CompareTag("Player")) 
                 {
                     buttonHit.Invoke(this);
+                this.GetComponent<AudioSource>().Play();
                 }
             }
     }
@@ -48,7 +49,7 @@ public class Button : MonoBehaviour
     public IEnumerator lightUp()
     {
         material.color *= 2f;
-
+        this.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(.5f);
 
         material.color = color;
