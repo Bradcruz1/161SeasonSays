@@ -122,6 +122,7 @@ public class ButtonManager : MonoBehaviour
     void completeListener(Button b)
     {
 
+        StartCoroutine(b.lightUp());
         //choice is right and not last button in pattern
         if (b.tag == seasons[pattern[currentButton]] && currentButton + 1 != patternLength)
         {
