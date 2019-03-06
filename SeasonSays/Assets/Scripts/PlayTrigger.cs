@@ -10,7 +10,7 @@ public class PlayTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(Scene);
+            SceneManager.LoadScene("Prototype");
         }
     }
 }
