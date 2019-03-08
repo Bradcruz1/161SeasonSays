@@ -127,6 +127,10 @@ public class PlayerMovement : MonoBehaviour
             m_inWind = true;
             m_elapsedTime = Time.time;
         }
+        if (other.CompareTag("Ice"))
+        {
+            isIcy = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -139,6 +143,10 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Fire"))
         {
             //other.GetComponent<AudioSource>().Stop();
+        }
+        if (other.CompareTag("Ice"))
+        {
+            isIcy = false;
         }
     }
 
