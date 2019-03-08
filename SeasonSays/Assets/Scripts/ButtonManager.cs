@@ -174,7 +174,7 @@ public class ButtonManager : MonoBehaviour
         float randomX = UnityEngine.Random.Range(-26f, 26f);
         float randomZ = UnityEngine.Random.Range(-26f, 26f);
         //try to add function to avoid spawning under player and fix "Box" problem
-        bool underPlayer = checkUnderPlayer(randomX, randomZ);
+        bool underPlayer = checkWithinCircle(Player.GetComponent<Transform>().position.x, Player.GetComponent<Transform>().position.z, 7f);
         bool inCircle = checkWithinCircle(randomX, randomZ, 26f);
         bool inCenter = checkWithinCircle(randomX, randomZ, 8f);
 
@@ -203,21 +203,6 @@ public class ButtonManager : MonoBehaviour
         else 
         {
             addWeatherEffect(b);
-        }
-    }
-
-    bool checkUnderPlayer(float x, float z)
-    {
-        float playerX = Player.GetComponent<Transform>().position.x;
-        float playerZ = Player.GetComponent<Transform>().position.y;
-
-        if (playerX == x || playerZ == z)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 
