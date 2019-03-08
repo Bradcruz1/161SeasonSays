@@ -170,25 +170,51 @@ public class ButtonManager : MonoBehaviour
 
     void addWeatherEffect(Button b)
     {
+        float randomX = Random.Range(-26f, 26f);
+        float randomZ = Random.Range(-26f, 26f);
         //try to add function to avoid spawning under player and fix "Box" problem
-        if (b.CompareTag("Spring"))
-        {
-            Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 3f, Random.Range(-26f, 26f)), Quaternion.identity);
-        }
+        bool underPlayer = checkUnderPlayer(randomX, randomZ);
 
-        if (b.CompareTag("Winter"))
+        if (!underPlayer) 
         {
-            Instantiate(IcePatch, new Vector3(Random.Range(-26f, 26f), 3f, Random.Range(-26f, 26f)), Quaternion.identity);
-        }
+            if (b.CompareTag("Spring"))
+            {
+                Instantiate(Puddle, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+            }
 
-        if (b.CompareTag("Fall"))
-        {
-            Instantiate(Wind, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
-        }
+            if (b.CompareTag("Winter"))
+            {
+                Instantiate(IcePatch, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+            }
 
-        if(b.CompareTag("Summer"))
+            if (b.CompareTag("Fall"))
+            {
+                Instantiate(Wind, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+            }
+
+            if(b.CompareTag("Summer"))
+            {
+                Instantiate(Fire, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+            }
+        }
+        else 
         {
-            Instantiate(Fire, new Vector3(Random.Range(-26f, 26f), 2.2f, Random.Range(-26f, 26f)), Quaternion.identity);
+            addWeatherEffect(b);
+        }
+    }
+
+    bool checkUnderPlayer(float x, float z)
+    {
+        float playerX = Player.GetComponent<Transform>().position.x;
+        float playerZ = Player.GetComponent<Transform>().position.y;
+
+        if (playerX == x || playerZ == z)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
