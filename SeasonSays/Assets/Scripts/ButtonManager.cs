@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class ButtonManager : MonoBehaviour
 
     void Awake()
     {
-        pattern.Add(Random.Range(0, 4));
+        pattern.Add(UnityEngine.Random.Range(0, 4));
         
         seasons.Add("Spring");
         seasons.Add("Summer");
@@ -170,12 +171,13 @@ public class ButtonManager : MonoBehaviour
 
     void addWeatherEffect(Button b)
     {
-        float randomX = Random.Range(-26f, 26f);
-        float randomZ = Random.Range(-26f, 26f);
+        float randomX = UnityEngine.Random.Range(-26f, 26f);
+        float randomZ = UnityEngine.Random.Range(-26f, 26f);
         //try to add function to avoid spawning under player and fix "Box" problem
         bool underPlayer = checkUnderPlayer(randomX, randomZ);
+        bool inCircle = checkOnBoard(randomX, randomZ);
 
-        if (!underPlayer) 
+        if (!underPlayer && inCircle) 
         {
             if (b.CompareTag("Spring"))
             {
@@ -218,9 +220,34 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    bool checkOnBoard(float x, float z)
+    {
+        float distance = distanceFromCenter(x, z);
+
+        if (distance < 26f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    float distanceFromCenter(float x, float z)
+    {
+        double a = Math.Pow((0 - x), 2);
+        double b = Math.Pow((0 - z), 2);
+
+        double d = Math.Sqrt(a+b);
+        float dist = (float)d;
+
+        return dist;
+    }
+
     void addPattern()
     {
-        pattern.Add(Random.Range(0,4));
+        pattern.Add(UnityEngine.Random.Range(0,4));
         patternLength += 1;
         patternStart = true;
     }
