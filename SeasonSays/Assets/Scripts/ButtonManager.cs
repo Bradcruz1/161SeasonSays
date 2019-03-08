@@ -170,6 +170,7 @@ public class ButtonManager : MonoBehaviour
 
     void addWeatherEffect(Button b)
     {
+        //try to add function to avoid spawning under player and fix "Box" problem
         if (b.CompareTag("Spring"))
         {
             Instantiate(Puddle, new Vector3(Random.Range(-26f, 26f), 3f, Random.Range(-26f, 26f)), Quaternion.identity);
