@@ -138,7 +138,7 @@ public class ButtonManager : MonoBehaviour
         else if (b.tag != seasons[pattern[currentButton]])
         {
             SceneManager.LoadScene("Over");
-            //Debug.Log("Loser");
+            Debug.Log("Loser");
             //trigger some kind of game over screen
         }
 

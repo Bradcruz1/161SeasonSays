@@ -34,7 +34,7 @@ public class Button : MonoBehaviour
             var normal = other.contacts[0].normal;
             
             Debug.Log(normal.y);
-            if (normal.y <= -.95) {
+            if (normal.y <= -.99) {
                 Debug.Log("bump");
                 if (other.collider.CompareTag("Player")) 
                 {
