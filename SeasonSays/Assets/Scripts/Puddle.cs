@@ -19,7 +19,9 @@ public class Puddle : MonoBehaviour
 
     void OnCollisionStay(Collision other)
     {
-        if (other.collider.CompareTag("Player"))
+        var normal = other.contacts[0].normal;
+        Debug.Log(normal.y);
+        if (other.collider.CompareTag("Player") && normal.y <= -.99)
         {
             Debug.Log("Collided");
             SceneManager.LoadScene("Over");

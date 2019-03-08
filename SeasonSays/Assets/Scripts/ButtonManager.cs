@@ -175,9 +175,10 @@ public class ButtonManager : MonoBehaviour
         float randomZ = UnityEngine.Random.Range(-26f, 26f);
         //try to add function to avoid spawning under player and fix "Box" problem
         bool underPlayer = checkUnderPlayer(randomX, randomZ);
-        bool inCircle = checkOnBoard(randomX, randomZ);
+        bool inCircle = checkWithinCircle(randomX, randomZ, 26f);
+        bool inCenter = checkWithinCircle(randomX, randomZ, 8f);
 
-        if (!underPlayer && inCircle) 
+        if (!underPlayer && inCircle && !inCenter) 
         {
             if (b.CompareTag("Spring"))
             {
@@ -220,11 +221,11 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    bool checkOnBoard(float x, float z)
+    bool checkWithinCircle(float x, float z, float radius)
     {
         float distance = distanceFromCenter(x, z);
 
-        if (distance < 26f)
+        if (distance < radius)
         {
             return true;
         }
