@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         m_collider = this.GetComponent<Collider>();
 
         m_speed = 20f;
-        m_jumpForce = 5f;
+        m_jumpForce = 10f;
         m_elapsedTime = 0f;
 
         m_grounded = true;
@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
     void HealthText()
     {
-        healthbar.text = "Health: " + playerHealth.ToString();
+        if(healthbar != null)
+            healthbar.text = "Health: " + playerHealth.ToString();
     }
 
     void FixedUpdate()
@@ -76,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isIcy) {
             m_rigidbody.velocity = new Vector3(horizontalMovement * m_speed * 5, currentVelocity.y, verticalMovement * m_speed * 5);
-
         }   
     }
 
@@ -84,21 +84,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && m_grounded)
         {
-
             m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_grounded = false;
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        m_grounded = true;
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    m_grounded = true;
 
-        if (other.collider.CompareTag("Ice"))
-        {
-            isIcy = true;
-        }
-    }
+    //    if (other.collider.CompareTag("Ice"))
+    //    {
+    //        isIcy = true;
+    //    }
+    //}
 
     //Fix Sound when you run straight through it
     void OnTriggerStay(Collider other)
@@ -150,11 +149,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision other)
-    {
-        if(other.collider.CompareTag("Ice"))
-        {
-            isIcy = false;
-        }
-    }
+    //void OnCollisionExit(Collision other)
+    //{
+    //    if(other.collider.CompareTag("Ice"))
+    //    {
+    //        isIcy = false;
+    //    }
+    //}
 }
