@@ -10,7 +10,8 @@ public class Button : MonoBehaviour
     private Material material;
     private Color color;
     public ButtonUnityEvent buttonHit = new ButtonUnityEvent();
-    
+    private bool checkedMessedUp = false;
+
     void Awake()
     {
         material = GetComponent<Renderer>().material;
@@ -48,9 +49,26 @@ public class Button : MonoBehaviour
     public IEnumerator lightUp()
     {
         material.color *= 2f;
-        this.GetComponent<AudioSource>().Play();
+        PlayButtonSounds();
         yield return new WaitForSeconds(.5f);
 
         material.color = color;
+    }
+
+    void PlayButtonSounds()
+    {
+        ButtonManager bm = this.transform.GetComponentInParent<ButtonManager>();
+        if (bm.patternStart)
+            checkedMessedUp = false;
+        if (!bm.messedUpPattern && !checkedMessedUp)
+        {
+            checkedMessedUp = true;
+            this.GetComponent<AudioSource>().Play();
+        }
+        else if (checkedMessedUp)
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
+
     }
 }

@@ -99,8 +99,7 @@ public class PlayerMovement : MonoBehaviour
         //    isIcy = true;
         //}
     }
-
-    //Fix Sound when you run straight through it
+    
     void OnTriggerStay(Collider other)
     {
         if(m_inWind && other.CompareTag("Wind"))

@@ -20,8 +20,8 @@ public class ButtonManager : MonoBehaviour
 
     private List<GameObject> weatherEffectsList = new List<GameObject>();
 
-    private bool patternStart = true;
-    private bool messedUpPattern = false;
+    public bool patternStart = true;
+    public bool messedUpPattern = false;
 
     public GameObject Puddle;
     public GameObject IcePatch;
@@ -72,7 +72,15 @@ public class ButtonManager : MonoBehaviour
         {
             round_text();
             playPattern();
+            if (!messedUpPattern)
+            {
+                ClearWeatherEffects();
+                //StartCoroutine(clearWeatherEffectsList());
+            }
+            else
+                messedUpPattern = false;
         }
+        
     }
 
     void playPattern() 
@@ -133,6 +141,8 @@ public class ButtonManager : MonoBehaviour
         else if (b.tag != seasons[pattern[currentButton]])
         {
             messedUpPattern = true;
+            this.GetComponent<AudioSource>().Play();
+            addWeatherEffect(b);
             //SceneManager.LoadScene("Over");
             //Debug.Log("Loser");
             //trigger some kind of game over screen
@@ -147,13 +157,10 @@ public class ButtonManager : MonoBehaviour
 
             addPattern();
             addWeatherEffect(b);
-            
-            //clearWeatherEffectsList();
 
             StartCoroutine(teleportPlayer());
 
             currentButton = 0;
-            StartCoroutine(clearWeatherEffectsList());
         }
 
     }
@@ -263,9 +270,18 @@ public class ButtonManager : MonoBehaviour
         Round.text = "Round: " + patternLength.ToString();
     }
 
-    IEnumerator clearWeatherEffectsList()
+    //IEnumerator clearWeatherEffectsList()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    foreach (GameObject effect in weatherEffectsList)
+    //    {
+    //        Destroy(effect);
+    //    }
+    //    weatherEffectsList.Clear();
+    //}
+    void ClearWeatherEffects()
     {
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(0.1f);
         foreach (GameObject effect in weatherEffectsList)
         {
             Destroy(effect);
