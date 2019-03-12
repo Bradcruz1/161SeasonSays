@@ -84,20 +84,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && m_grounded)
         {
+            this.transform.Find("JumpSound").GetComponent<AudioSource>().Play();
             m_rigidbody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_grounded = false;
         }
     }
 
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    m_grounded = true;
+    private void OnCollisionEnter(Collision other)
+    {
+        m_grounded = true;
 
-    //    if (other.collider.CompareTag("Ice"))
-    //    {
-    //        isIcy = true;
-    //    }
-    //}
+        //if (other.collider.CompareTag("Ice"))
+        //{
+        //    isIcy = true;
+        //}
+    }
 
     //Fix Sound when you run straight through it
     void OnTriggerStay(Collider other)

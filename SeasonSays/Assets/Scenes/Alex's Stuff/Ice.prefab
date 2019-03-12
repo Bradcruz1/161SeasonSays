@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1272800826622221691}
   - component: {fileID: 42175607392357125}
   - component: {fileID: 1788854321268280503}
-  - component: {fileID: 7517179751235466348}
+  - component: {fileID: 626643905634659023}
+  - component: {fileID: 6780779146205884678}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Ice
@@ -124,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3892076, y: 3, z: 1.2914494}
   m_Center: {x: 0.05667329, y: 0, z: 0.016005278}
---- !u!82 &7517179751235466348
+--- !u!82 &626643905634659023
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,13 +143,13 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -220,3 +221,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6780779146205884678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326626260911364703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd0e6b15f12c347aa55537c96f7dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

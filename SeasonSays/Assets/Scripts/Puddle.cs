@@ -6,16 +6,6 @@ using UnityEngine.SceneManagement;
 public class Puddle : MonoBehaviour
 {
     public GameObject player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //playSound();
-    }
-
-    //void playSound()
-    //{
-    //    this.GetComponent<AudioSource>().Play();
-    //}
 
     void OnCollisionStay(Collision other)
     {

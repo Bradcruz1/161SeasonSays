@@ -18,7 +18,10 @@ public class ButtonManager : MonoBehaviour
 
     private List<string> seasons = new List<string>();
 
+    private List<GameObject> weatherEffectsList = new List<GameObject>();
+
     private bool patternStart = true;
+    private bool messedUpPattern = false;
 
     public GameObject Puddle;
     public GameObject IcePatch;
@@ -69,9 +72,7 @@ public class ButtonManager : MonoBehaviour
         {
             round_text();
             playPattern();
-        
         }
-        
     }
 
     void playPattern() 
@@ -79,9 +80,6 @@ public class ButtonManager : MonoBehaviour
         patternStart = false;
 
         StartCoroutine(play());
-
-
-
     }
 
     IEnumerator play()
@@ -100,9 +98,6 @@ public class ButtonManager : MonoBehaviour
             GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[pattern[p]]);
 
             StartCoroutine(currentButton.GetComponent<Button>().lightUp());
-
-
-
         }
 
         StartCoroutine(putDownBarrier());
@@ -132,14 +127,14 @@ public class ButtonManager : MonoBehaviour
             addWeatherEffect(b);
 
             progress_text();
-
         }
 
         //choice was not right;
         else if (b.tag != seasons[pattern[currentButton]])
         {
-            SceneManager.LoadScene("Over");
-            Debug.Log("Loser");
+            messedUpPattern = true;
+            //SceneManager.LoadScene("Over");
+            //Debug.Log("Loser");
             //trigger some kind of game over screen
         }
 
@@ -152,11 +147,13 @@ public class ButtonManager : MonoBehaviour
 
             addPattern();
             addWeatherEffect(b);
-
+            
+            //clearWeatherEffectsList();
 
             StartCoroutine(teleportPlayer());
 
             currentButton = 0;
+            StartCoroutine(clearWeatherEffectsList());
         }
 
     }
@@ -182,22 +179,26 @@ public class ButtonManager : MonoBehaviour
         {
             if (b.CompareTag("Spring"))
             {
-                Instantiate(Puddle, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                GameObject thisPuddle = (GameObject)Instantiate(Puddle, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                weatherEffectsList.Add(thisPuddle);
             }
 
             if (b.CompareTag("Winter"))
             {
-                Instantiate(IcePatch, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                GameObject thisIcePatch = (GameObject)Instantiate(IcePatch, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                weatherEffectsList.Add(thisIcePatch);
             }
 
             if (b.CompareTag("Fall"))
             {
-                Instantiate(Wind, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+                GameObject thisWind = (GameObject)Instantiate(Wind, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+                weatherEffectsList.Add(thisWind);
             }
 
             if(b.CompareTag("Summer"))
             {
-                Instantiate(Fire, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+                GameObject thisFire = (GameObject)Instantiate(Fire, new Vector3(randomX, 2.2f, randomZ), Quaternion.identity);
+                weatherEffectsList.Add(thisFire);
             }
         }
         else 
@@ -260,5 +261,15 @@ public class ButtonManager : MonoBehaviour
     void round_text()
     {
         Round.text = "Round: " + patternLength.ToString();
+    }
+
+    IEnumerator clearWeatherEffectsList()
+    {
+        yield return new WaitForSeconds(1);
+        foreach (GameObject effect in weatherEffectsList)
+        {
+            Destroy(effect);
+        }
+        weatherEffectsList.Clear();
     }
 }
