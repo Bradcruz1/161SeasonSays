@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayTrigger : MonoBehaviour
+public class Triggers : MonoBehaviour
 {
     public string Scene;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Prototype");
+            SceneManager.LoadScene(Scene);
         }
     }
 }
