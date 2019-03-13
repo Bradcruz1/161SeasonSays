@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FinalScenes/Game.unity
     guid: 845a4005f18762e45915d8b0ae69c1ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FinalScenes/Main.unity
     guid: e7d845f2394d04529a4599308212b606
   - enabled: 1
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScenes/Instructions.unity
     guid: b50b0b4f19c3d614f973459a1887cb5a
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Final Game.unity
+    guid: 7fcf559c44b40e64bb1d7601fad34469
   m_configObjects: {}
