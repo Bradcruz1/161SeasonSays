@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         m_collider = this.GetComponent<Collider>();
 
         m_speed = 20f;
-        m_jumpForce = 10f;
+        m_jumpForce = 15f;
         m_elapsedTime = 0f;
 
         m_grounded = true;
