@@ -186,7 +186,7 @@ public class ButtonManager : MonoBehaviour
         float randomX = UnityEngine.Random.Range(-26f, 26f);
         float randomZ = UnityEngine.Random.Range(-26f, 26f);
         //try to add function to avoid spawning under player and fix "Box" problem
-        bool underPlayer = checkWithinCircle(Player.GetComponent<Transform>().position.x, Player.GetComponent<Transform>().position.z, 7f);
+        bool underPlayer = checkWithinCircle(Player.GetComponent<Transform>().position.x, Player.GetComponent<Transform>().position.z, 10f);
         bool inCircle = checkWithinCircle(randomX, randomZ, 26f);
         bool inCenter = checkWithinCircle(randomX, randomZ, 8f);
 
