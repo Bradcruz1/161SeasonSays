@@ -194,13 +194,13 @@ public class ButtonManager : MonoBehaviour
         {
             if (b.CompareTag("Spring"))
             {
-                GameObject thisPuddle = (GameObject)Instantiate(Puddle, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                GameObject thisPuddle = (GameObject)Instantiate(Puddle, new Vector3(randomX, 1.02f, randomZ), Quaternion.identity);
                 weatherEffectsList.Add(thisPuddle);
             }
 
             if (b.CompareTag("Winter"))
             {
-                GameObject thisIcePatch = (GameObject)Instantiate(IcePatch, new Vector3(randomX, 3f, randomZ), Quaternion.identity);
+                GameObject thisIcePatch = (GameObject)Instantiate(IcePatch, new Vector3(randomX, 1.02f, randomZ), Quaternion.identity);
                 weatherEffectsList.Add(thisIcePatch);
             }
 
