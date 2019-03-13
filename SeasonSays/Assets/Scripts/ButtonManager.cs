@@ -48,6 +48,7 @@ public class ButtonManager : MonoBehaviour
         seasons.Add("Winter");
 
         ShowBarrier();
+        wait_text();
     }
 
     // Start is called before the first frame update
@@ -88,7 +89,6 @@ public class ButtonManager : MonoBehaviour
     void playPattern() 
     {
         patternStart = false;
-
         StartCoroutine(play());
     }
 
@@ -102,7 +102,9 @@ public class ButtonManager : MonoBehaviour
             yield return new WaitForSeconds(1);
 
             ShowBarrier();
-            wait_text();
+            wait_go.gameObject.SetActive(true);
+            progress.gameObject.SetActive(false);
+
             //center.sharedMaterial = colors[1];
             
             GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[pattern[p]]);
@@ -175,6 +177,8 @@ public class ButtonManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         progress_text();
         Player.GetComponent<Transform>().position = new Vector3(0,6,0);
+
+        wait_text();
     }
 
     void addWeatherEffect(Button b)
