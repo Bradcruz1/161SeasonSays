@@ -33,9 +33,9 @@ public class Button : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         var normal = other.contacts[0].normal;
-            
         Debug.Log(normal.y);
-        if (normal.y <= -.99) {
+        if (normal.y == -1)
+        {
             Debug.Log("bump");
             if (other.collider.CompareTag("Player")) 
             {

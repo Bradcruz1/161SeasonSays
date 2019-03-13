@@ -46,6 +46,8 @@ public class ButtonManager : MonoBehaviour
         seasons.Add("Summer");
         seasons.Add("Fall");
         seasons.Add("Winter");
+
+        ShowBarrier();
     }
 
     // Start is called before the first frame update
@@ -60,7 +62,7 @@ public class ButtonManager : MonoBehaviour
             b.buttonHit.AddListener(completeListener);
         }
 
-        center.sharedMaterial = colors[0];
+        //center.sharedMaterial = colors[0];
         progress_text();
         progress.gameObject.SetActive(false);
     }
@@ -101,7 +103,7 @@ public class ButtonManager : MonoBehaviour
 
             ShowBarrier();
             wait_text();
-            center.sharedMaterial = colors[1];
+            //center.sharedMaterial = colors[1];
             
             GameObject currentButton = GameObject.FindGameObjectWithTag(seasons[pattern[p]]);
 
@@ -116,7 +118,7 @@ public class ButtonManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         HideBarrier();
-        center.sharedMaterial = colors[2];
+        //center.sharedMaterial = colors[2];
         wait_go.gameObject.SetActive(false);
         progress.gameObject.SetActive(true);
     }
@@ -135,6 +137,7 @@ public class ButtonManager : MonoBehaviour
             addWeatherEffect(b);
 
             progress_text();
+            Debug.Log("Hit1");
         }
 
         //choice was not right;
@@ -161,6 +164,7 @@ public class ButtonManager : MonoBehaviour
             StartCoroutine(teleportPlayer());
 
             currentButton = 0;
+            Debug.Log("Hit2");
         }
 
     }
