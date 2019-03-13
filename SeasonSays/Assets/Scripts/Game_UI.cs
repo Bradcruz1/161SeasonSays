@@ -77,12 +77,12 @@ public class Game_UI : MonoBehaviour
 
     void progress_text()
     {
-        progress.text = "Progress: " + curr.ToString() + "/" + total.ToString();
+        progress.text = "Progress : " + curr.ToString() + "/" + total.ToString();
     }
 
     void round_text()
     {
-        Round.text = "Round: " + round.ToString();
+        Round.text = "Round : " + round.ToString();
     }
 
     

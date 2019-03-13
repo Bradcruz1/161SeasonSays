@@ -77,8 +77,8 @@ public class ButtonManager : MonoBehaviour
             playPattern();
             if (!messedUpPattern)
             {
-                ClearWeatherEffects();
-                //StartCoroutine(clearWeatherEffectsList());
+                //ClearWeatherEffects();
+                StartCoroutine(clearWeatherEffectsList());
             }
             else
                 messedUpPattern = false;
@@ -270,23 +270,23 @@ public class ButtonManager : MonoBehaviour
 
     void progress_text()
     {
-        progress.text = "Progress: " + currentButton.ToString() + "/" + patternLength.ToString();
+        progress.text = "Progress : " + currentButton.ToString() + "/" + patternLength.ToString();
     }
 
     void round_text()
     {
-        Round.text = "Round: " + patternLength.ToString();
+        Round.text = "Round : " + patternLength.ToString();
     }
 
-    //IEnumerator clearWeatherEffectsList()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    foreach (GameObject effect in weatherEffectsList)
-    //    {
-    //        Destroy(effect);
-    //    }
-    //    weatherEffectsList.Clear();
-    //}
+    IEnumerator clearWeatherEffectsList()
+    {
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject effect in weatherEffectsList)
+        {
+            Destroy(effect);
+        }
+        weatherEffectsList.Clear();
+    }
     void ClearWeatherEffects()
     {
         //yield return new WaitForSeconds(0.1f);

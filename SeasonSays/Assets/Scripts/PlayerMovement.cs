@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     void HealthText()
     {
         if(healthbar != null)
-            healthbar.text = "Health: " + playerHealth.ToString();
+            healthbar.text = "Health : " + playerHealth.ToString();
     }
 
     void FixedUpdate()
