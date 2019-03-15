@@ -33,10 +33,10 @@ public class Button : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         var normal = other.contacts[0].normal;
-        Debug.Log(normal.y);
+        //Debug.Log(normal.y);
         if (normal.y == -1)
         {
-            Debug.Log("bump");
+            //Debug.Log("bump");
             if (other.collider.CompareTag("Player")) 
             {
                 buttonHit.Invoke(this);

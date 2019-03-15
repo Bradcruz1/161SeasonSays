@@ -813,9 +813,9 @@ MonoBehaviour:
 
     Move: WASD, Jump: Spacebar.
 
-    Copy the Pattern.
+    Copy the Pattern by jumping on the buttons.
 
-    Weather effects will appear as you go.
+    Weather effects will appear as you progress.
 
     If you get the pattern right, the weather effects will disappear.
 
@@ -823,7 +823,7 @@ MonoBehaviour:
 
     Ice is slippery.
 
-    Fire will damamge you.
+    Fire will damage you.
 
     Wind will push you .'
 --- !u!222 &1709960242
