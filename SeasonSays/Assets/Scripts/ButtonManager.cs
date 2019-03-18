@@ -139,7 +139,7 @@ public class ButtonManager : MonoBehaviour
             addWeatherEffect(b);
 
             progress_text();
-            Debug.Log("Hit1");
+            //Debug.Log("Hit1");
         }
 
         //choice was not right;
@@ -166,7 +166,7 @@ public class ButtonManager : MonoBehaviour
             StartCoroutine(teleportPlayer());
 
             currentButton = 0;
-            Debug.Log("Hit2");
+            //Debug.Log("Hit2");
         }
 
     }
